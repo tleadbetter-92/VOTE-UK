@@ -1,12 +1,13 @@
+const path = require('path');
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  swcMinify: true,
-  env: {
-    MONGODB_URI: process.env.MONGODB_URI,
+  webpack: (config) => {
+    config.resolve.alias['@'] = path.resolve(__dirname, 'src');
+    return config;
   },
 }
 
 module.exports = nextConfig
-
 
